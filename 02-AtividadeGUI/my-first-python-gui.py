@@ -1,4 +1,5 @@
 # Código disponibilizado pelo Professor Leonardo
+
 from tkinter import *
 
 def add():
