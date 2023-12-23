@@ -40,16 +40,38 @@ def escreveForm():
         arquivo.write(nome + '|')
         arquivo.write(idade + '|')
         arquivo.write(sexo + '|')
-        arquivo.write(telefone + '\n')
+        arquivo.write(telefone + '|' +'\n')
         arquivo.close()
 
 def buscaPorSexo(sexo):
-    print('teste')
+    arquivo = open('meu_nome.txt', 'r', encoding='utf-8')
+    tudo = arquivo.read()
+    tudo = tudo.split('|')
+    n = 0
+    while n < len(tudo)-1:
+        if tudo[n+2] == sexo:
+            print('Nome: ' + tudo[n].strip('\n'))
+            print('Idade: ' + tudo[n+1] + ' anos')
+            tudo[n+2] = tudo[n+2] == 'M' and 'Masculino' or 'Feminino'
+            print('Sexo: ' + tudo[n+2])
+            print('Telefone: ' + tudo[n+3].strip('\n'))
+        n += 4
+            
+
 
 def buscaPorNome(nomeProcurado):
-    print('teste')
-
-# Print
+    arquivo = open('meu_nome.txt', 'r', encoding='utf-8')
+    tudo = arquivo.read()
+    tudo = tudo.split('|')
+    n = 0
+    while n < len(tudo)-1:
+        if tudo[n].strip('\n') == nomeProcurado:
+            print('Nome: ' + tudo[n].strip('\n'))
+            print('Idade: ' + tudo[n+1] + ' anos')
+            tudo[n+2] = tudo[n+2] == 'M' and 'Masculino' or 'Feminino'
+            print('Sexo: ' + tudo[n+2])
+            print('Telefone: ' + tudo[n+3].strip('\n'))
+        n += 4
 
 def readForm():
     arquivo = open('meu_nome.txt', 'r', encoding='utf-8')
@@ -57,16 +79,20 @@ def readForm():
     tudo = tudo.split('|')
 
     for linha in tudo:
-        print(linha)
 
-    # Nome: ...
-    
-    # Idade: ...
-
-    # Masculino: ...
-    
-    # Telefone: ...
+        if len(linha) > 3 and not linha.isdigit():
+            print('Nome: ' + linha.strip('\n'))
+        elif len(linha) <= 3 and linha.isdigit():
+            print('Idade: ' + linha + ' anos')
+        elif linha == 'M' or linha == 'F':
+            if linha == 'M':
+                linha = 'Masculino'
+            else:
+                linha = 'Feminino'
+            print('Sexo: ' + linha)
+        elif len(linha) > 3:
+            print('Telefone: ' + linha.strip('\n'))
 
 if __name__ == "__main__":
     #print('Preencha o formulário abaixo e para cancelar digite 0 na opção nome')
-    readForm()
+    buscaPorNome("Wedson")

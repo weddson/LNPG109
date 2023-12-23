@@ -1,0 +1,16 @@
+
+É possível abrir um arquivo com o open('diretório', 'tipo de abertura(r, w ou a)', encoding="utf-8")
+
+Você pode definir uma variável como um arquivo.
+
+E caso você dê print na variável ele vai te retornar o que tiver dentro do arquivo. 
+
+Você ainda pode dar split nos arquivos com a função variável.split('separador'), quando dentro de uma variável
+Assim ele vai separar tudo dentro do arquivo e transformar em uma tabela.
+
+Para escrever em um arquivo é utilizada a função variável.write('o que vai ser escrito.')
+
+Você deve fechar o arquivo depois, com o variável.close()
+
+
+
